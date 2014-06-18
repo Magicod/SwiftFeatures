@@ -4,6 +4,13 @@
 
 ##语法
 
+一般闭包的形式如下：
+<pre lang=swift>
+	{ (parameters) -> returnType in
+	    statements
+	}
+</pre>
+
 ##省略 return 的情况
 
 ##简写参数名
@@ -12,5 +19,5 @@
 
 ##“捕获”的概念
 
-##闭包
+##闭包引用
 
