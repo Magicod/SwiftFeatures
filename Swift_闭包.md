@@ -87,6 +87,22 @@ Swift 标准库提供了一个 sort 函数，他以闭包为基础，将未知�
 </pre>
 
 ##捕获值
+闭包是可以获取上下文中定义的变量和常量的，这一点其实很好理解，子域和外部的常量，变量都属于外部域中的资源，在同一个访问级别上，所以他们之间能够访问。
+代码：
+<pre>
+
+	func makeIncrementor(forIncrement amount: Int) -> () -> Int {
+	    var runningTotal = 0
+	    func incrementor() -> Int {
+	        runningTotal += amount
+	        return runningTotal
+	    }
+	    return incrementor
+	}
+
+</pre>
+
+> 如果将一个闭包赋值到类实例的一个属性上，闭包捕获那个实例之后，将会在实例和闭包之间造成循环引用。Swift 使用“捕获列表”来打破强引用循环。[ARC -> 闭包的强引用循环]
 
 ##闭包是引用类型的
 
