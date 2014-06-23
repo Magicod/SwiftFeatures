@@ -87,7 +87,7 @@ Swift 标准库提供了一个 sort 函数，他以闭包为基础，将未知�
 </pre>
 
 ##捕获值
-闭包是可以获取上下文中定义的变量和常量的，这一点其实很好理解，子域和外部的常量，变量都属于外部域中的资源，在同一个访问级别上，所以他们之间能够访问。
+闭包是可以获取上下文中定义的变量和常量的，这一点其实很好理解，子域和外部的常量，变量都属于外部域可访问的资源，在同一个访问级别，所以他们之间能够访问。
 代码：
 <pre>
 
@@ -104,7 +104,39 @@ Swift 标准库提供了一个 sort 函数，他以闭包为基础，将未知�
 
 > 如果将一个闭包赋值到类实例的一个属性上，闭包捕获那个实例之后，将会在实例和闭包之间造成循环引用。Swift 使用“捕获列表”来打破强引用循环。[ARC -> 闭包的强引用循环]
 
-##闭包是引用类型的
+##闭包是引用类型
+闭包是引用类型，像函数指针一样，闭包本身也是一种类型，可以将闭包赋值给闭包类型的变量。当闭包体被赋值给 a , b 两个常量时，他们实际上都指向了原始闭包体。
 
+代码:
+<pre>
+	//将函数闭包作为返回值 increment() 闭包捕获了 returnValue 值，并对它进行加法运算
+    func incrementValue(incrementValue value:Int) -> () -> Int {
+        var returnValue = 0
+
+        func increment() -> Int {
+            returnValue += value
+            return returnValue
+        }
+
+        return increment
+    }
+
+    func referenceClosure() {
+        let incrementByTen = self.incrementValue(incrementValue: 10)
+        var t = incrementByTen()
+        t = incrementByTen()
+		
+		let alsoIncrementByTen = self.incrementValue(incrementValue: 10)
+		t = alsoIncrementByTen()
+        
+        println("t :\(t)");//此时 t 为 30
+		
+        let incrementByFive = self.incrementValue(incrementValue: 5)
+        t = incrementByFive()
+        println("t :\(t)");
+
+    }
+	
+</pre>
 
 
