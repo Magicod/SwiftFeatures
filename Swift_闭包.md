@@ -1,5 +1,5 @@
 [@author](https://github.com/xudeheng)
-#Swift闭包（Closure）
+Swift 闭包（Closure）
 
 闭包是一种可以在代码中作为参数传递，自含的功能块。 闭包类似于 C 和 Objective-C 中的 block 语法 又或者类似于其他语言中的 lambda 语法。闭包是一种灵活的代码块，能作为参数传递，在实际项目中，会将一些自定义功能，交给闭包来完成，提高代码的灵活性。
 
