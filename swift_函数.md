@@ -1,4 +1,4 @@
-swift-函数
+#Swift 函数
 ##函数
 对于代码编写最基本的单位，函数的重要性不言而喻，swift语言中，函数更多样，更灵活相比oc
 ###定义函数
@@ -10,7 +10,7 @@ func 做为前缀，表明开始定义一个函数了。->箭头指向就是返�
 }
 ```
 
-swift 中 
+swift 中
 ```go
 func testFunction(nameString:String)->String{
 	println("test function/(nameString)")
@@ -104,7 +104,7 @@ swift
 	let info = testTupleTypeFunction("1234567890")
 	printl("name is \(info.name),tel is \(info.tel)")
  ```
- 
+
 相比oc更加简洁。节省了数据的拼接
 3，函数类型，把它归结在函数返回值里面，确实有点低估它的力量了。
 swift 在文档中这样描述它的，可以像其他类型一样的使用函数类型。这就说明问题了啊
