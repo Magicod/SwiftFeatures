@@ -85,13 +85,13 @@ where 后面紧跟的是对于关联类型的约束
 如：确保两个容器的里面的元素是统一类型
 
 <pre lang=swift>
-	func allItemMatch < C1:Container,C2:Container where C1.ItemType == C2.ItemType, .....>（someCon:C1,otherCon:C2）{
+	func allItemMatch < C1:Container,C2:Container where C1.ItemType == C2.ItemType, others>（someCon:C1,otherCon:C2）{
 		
 
 	}
 </pre>
 
-这里的....是对于泛型类型约束的其他条件和上面的类型约束可以连续起来。
+这里的others是对于泛型类型约束的其他条件和上面的类型约束可以连续起来。
 
 ##终结：
 
