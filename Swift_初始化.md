@@ -92,8 +92,6 @@ init(parameters) {
 
 两段构造，第一段是设置存储属性的初始值，第二阶段是为初始化结果的变量定义出变量的属性。
 
-###构造器继承、重载
-
 ##通过闭包和函数设置函数默认值
 通过闭包或者函数来设置默认值
 
@@ -108,6 +106,38 @@ init(parameters) {
 </pre>
  
 一对小（）表明立即停止执行闭包，如果去掉（）闭包本身是给变量赋值，而不是讲闭包的返回值最为赋值属性。
+<pre lang=swift>
+	struct Checkerboard {
+	    let boardColors: Bool[] = {
+	        var temporaryBoard = Bool[]()
+	        var isBlack = false
+	        for i in 1...10 {
+	            for j in 1...10 {
+	                temporaryBoard.append(isBlack)
+	                isBlack = !isBlack
+	            }
+	            isBlack = !isBlack
+	        }
+	        return temporaryBoard
+	        }()
+	    func squareIsBlackAtRow(row: Int, column: Int) -> Bool {
+	        return boardColors[(row * 10) + column]
+	    }
+	}
+</pre>
+ 
+对于 squareIsBlackAtRow 对闭包函数的调用
+<pre lang=swift>
+	“let board = Checkerboard()
+	println(board.squareIsBlackAtRow(0, column: 1))
+	// prints "true"
+	println(board.squareIsBlackAtRow(9, column: 9))
+	// prints "false”
+</pre>
+
+对Checkerboard的初始化。调用squareIsBlackAtRow 方法。
+摘录来自: Apple Inc. “The Swift Programming Language”。 iBooks. https://itun.es/cn/jEUH0.l
 
 ##终结
-
+在构造函数的章节中，基本的概念是和oc相同的，不同的是增加的闭包内部初始化内容，属于格式的不同。在构造中不同与oc的是两段构造方式，oc中先给初始值都赋值为nil，或者0。
+在构造链中犹豫多了便利构造，闲的复杂，但是如果把便利构造当成调用自定义构造的特殊默认构造函数就很好理解了。
