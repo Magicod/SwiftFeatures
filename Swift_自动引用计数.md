@@ -88,7 +88,9 @@ println("\(country.name)'s capital city is called \(country.capitalCity.name)")
  一个contry 的初始化语句同时生成两个变量，而且不发生循环引用的事情。
 
 
-##闭包函数中的强引用环
+###闭包函数中的强引用环
+
+
 
 在闭包函数中，引起循环引用的问题原理和上文的原因是一样的，对于闭包中用到了类的变量，self.变量 导致闭包持有变量，产生强引用。
 
