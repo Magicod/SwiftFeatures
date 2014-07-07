@@ -84,8 +84,11 @@ println("\(country.name)'s capital city is called \(country.capitalCity.name)")
 
 
  一个contry 的初始化语句同时生成两个变量，而且不发生循环引用的事情。
- 
+
 
 ##闭包函数中的强引用环
+
+
+
 
 
