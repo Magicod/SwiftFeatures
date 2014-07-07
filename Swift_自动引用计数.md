@@ -88,7 +88,69 @@ println("\(country.name)'s capital city is called \(country.capitalCity.name)")
 
 ##闭包函数中的强引用环
 
+在闭包函数中，引起循环引用的问题原理和上文的原因是一样的，对于闭包中用到了类的变量，self.变量 导致闭包持有变量，产生强引用。
 
+如代码
+<pre lang=swift>
+ class HTMLElement {
+    
+    let name: String
+    let text: String?
+    
+    @lazy var asHTML: () -> String = {
+        if let text = self.text {
+            return "<\(self.name)>\(text)</\(self.name)>"
+        } else {
+            return "<\(self.name) />"
+        }
+    }
+    
+    init(name: String, text: String? = nil) {
+        self.name = name
+        self.text = text
+    }
+    
+    deinit {
+        println("\(name) is being deinitialized")
+    }
+    
+} 
+
+调用：
+ 
+var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
+println(paragraph!.asHTML())
+// prints "<p>hello, world</p>”
+ </pre>
+ 
+那如何解决呢？ 和上文一样，利用起来弱引用，和无主引用。
+<pre lang=swift>
+
+@lazy var someClosure: (Int, String) -> String = {
+    [unowned self] (index: Int, stringToProcess: String) -> String in
+    // closure body goes here
+} 
+有参数的时候
+ @lazy var someClosure: () -> String = {
+    [unowned self] in
+    // closure body goes here
+} 
+无参数的时候
+ </pre>
+ 
+ 在闭包中对self 进行unowned 的修饰，这样循环不存在了。这里self 不能为nil 所以用的是无主引用，如果如果占有引用可为nil,那么就可以用weak。
+
+ <pre lang=swift>
+ “@lazy var asHTML: () -> String = {
+        [unowned self] in
+        if let text = self.text {
+            return "<\(self.name)>\(text)</\(self.name)>"
+        } else {
+            return "<\(self.name) />"
+        }
+    } 
+</pre>
+ 
 
 
 
