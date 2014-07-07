@@ -90,7 +90,6 @@ println("\(country.name)'s capital city is called \(country.capitalCity.name)")
 
 ##闭包函数中的强引用环
 
-
 在闭包函数中，引起循环引用的问题原理和上文的原因是一样的，对于闭包中用到了类的变量，self.变量 导致闭包持有变量，产生强引用。
 
 如代码
