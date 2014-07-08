@@ -4,7 +4,7 @@
 
 可以在所支持类型的大括号外书写嵌套类型的定义，来实现类型中嵌套另一个类型。类型可以提供任意多的嵌套层次。
 
-#在 Action 中使用嵌套类型
+##在 Action 中使用嵌套类型
 
 下面这个例子，定义了一个叫 BlackjackCard 的结构体来作为 Blackjack 游戏中的模型。BlackJack 结构体包含了两个分别叫 Suit 和 Rank 的迭代枚举类型。
 
@@ -73,7 +73,7 @@ BlackjackCard 结构体本身有两个属性 rank 和 suit。它也定义了一�
 
 甚至通过在 BlackjackCard 中嵌套 Rank 和 Suit ，他们的类型可以通过上下文进行推测出来，所以初始化过程中能够直接通过成员名称来引用枚举成员(.Ace 和 .Spades)。在上面的例子中 description 属性正确的反应了 Spades 的 Ace 分别有一个 1 或 11的值。
 
-#引用嵌套类型
+##引用嵌套类型
 在上下文外部使用一个嵌套类型，只需要在它的名称前增加一个它的宿主类型名作为前缀即可：
 
 	let heartsSymbol = BlackjackCard.Suit.Hearts.toRaw()
