@@ -1,3 +1,4 @@
+@author(https://github.com/xudeheng)
 #嵌套类型
 枚举通常是被用来支持一个指定的类或者结构体的功能。类似的，枚举也可以简化在一个复杂类型的上下文中定义工具类和结构。为了提供枚举功能，Swift 定义了嵌套类型，据此你可以让枚举类型，类，结构体都提供枚举他们支持的类型。
 
@@ -75,10 +76,9 @@ BlackjackCard 结构体本身有两个属性 rank 和 suit。它也定义了一�
 #引用嵌套类型
 在上下文外部使用一个嵌套类型，只需要在它的名称前增加一个它的宿主类型名作为前缀即可：
 
-	let theAceOfSpades = BlackjackCard(rank: .Ace, suit: .Spades)
-	println("theAceOfSpades: \(theAceOfSpades.description)")
-	// prints "theAceOfSpades: suit is ♠, value is 1 or 11”
+	let heartsSymbol = BlackjackCard.Suit.Hearts.toRaw()
+	// heartsSymbol is "♡”
 
-上面的例子，说明允许 Suit, Rank 和 Values 的名称简短，这些名称被他们定义
+上面的例子，说明 Suit, Rank 和 Values 的名称被设计的简短，由于这些名称只有在他们所定义的上下文中才具有合法性。(译者：最后这段话，有点晦涩，我想它的意思就是，由于嵌套类型只有通过层层嵌套名称才能访问，所以你需要把嵌套类型的名称尽可能的定义的简短一些。)
 
 
