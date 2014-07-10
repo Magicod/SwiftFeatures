@@ -1,6 +1,22 @@
 Swift_协议（Protocal）
 
 ##定义
-##内容要求
+
+协议：顾名思义就是一套规则，一套你执行中遵循的规则方法。在Swift 中协议可以被类，枚举，结构体实现。
+
+###协议的语法
+
+<pre lang=swift>
+ 	protocol SomeProtocol {
+  
+	} 
+
+	struct SomeStructure: FirstProtocol, AnotherProtocol {
+ 
+	} 
+
+摘录来自: Apple Inc. “The Swift Programming Language”。 iBooks. https://itun.es/cn/jEUH0.l
+</pre>
+##属性要求
 ##方法要求
-###
+##
