@@ -1,3 +1,4 @@
+[@author](https://github.com/xudeheng)
 #子脚本（Subscripts）
 类，结构体，和枚举都可以定义子脚本来作为访问集合子元素的捷径。例如：你可以这样访问 Array 对象的子元素，someArray[index]，也可以这样访问 Dictionary 的子元素 someDictionary[key]。子脚本就是提供这样功能的 Swift 特性，它允许你为自己的类设置类似的便捷访问几何元素的途径。
 
@@ -73,13 +74,13 @@ class SubscriptSample {
         get {
             return self.car[key]!
         }
-        
+
         set(inputValue) {
             println("key :\(key), newValue :\(inputValue)")
             self.car[key] = inputValue
         }
     }
-    
+
 }
 
 使用方法的代码
@@ -89,7 +90,7 @@ class SubscriptSample {
     //获取 name 的值
     var name :String = (subscriptSample["name"])
     println("origin age :\(name)")
-    
+
     //设置 name 的新值
     subscriptSample["name"] = "VolksWage"
     name = subscriptSample["name"]
@@ -142,4 +143,3 @@ var matrix = Matrix(rows: 2, columns: 2)
 matrix[0, 1] = 1.5
 
 如果第一个例子看懂了，看懂官方的这个矩阵示例，就不在话下了。
-
